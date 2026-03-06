@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-leaderboard',
   templateUrl: './leaderboard.page.html',
   styleUrls: ['./leaderboard.page.scss'],

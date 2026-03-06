@@ -1,13 +1,35 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>register</ion-title>
+    <ion-title>Register</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">register</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="auth-container">
+    <h2>Create account</h2>
+
+    <div class="form-group">
+      <ion-label>Username</ion-label>
+      <ion-input placeholder="Choose a username"></ion-input>
+    </div>
+
+    <div class="form-group">
+      <ion-label>Email</ion-label>
+      <ion-input type="email" placeholder="your@email.com"></ion-input>
+    </div>
+
+    <div class="form-group">
+      <ion-label>Password</ion-label>
+      <ion-input type="password" placeholder="At least 8 characters"></ion-input>
+    </div>
+
+    <ion-button expand="block" class="register-btn">
+      Register
+    </ion-button>
+
+    <p class="auth-link">
+      Already have an account?
+      <a routerLink="/login">Login</a>
+    </p>
+  </div>
 </ion-content>

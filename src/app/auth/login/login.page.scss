@@ -1,0 +1,66 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+ion-header {
+  flex-shrink: 0;
+}
+
+ion-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  gap: 20px;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+h2 {
+  margin: 0 0 20px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+ion-label {
+  font-weight: 500;
+}
+
+ion-input {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.login-btn {
+  margin-top: 10px;
+  max-width: 320px;
+}
+
+.auth-link {
+  text-align: center;
+  font-size: 14px;
+  margin: 10px 0 0 0;
+  width: 100%;
+}
+
+.auth-link a {
+  color: var(--ion-color-primary);
+  text-decoration: none;
+}
