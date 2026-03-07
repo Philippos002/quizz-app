@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AdminPageRoutingModule } from './admin-routing.module';
 
 import { AdminPage } from './admin.page';
+import { AddQuestionModalComponent } from './add-question-modal/add-question-modal.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { AdminPage } from './admin.page';
     IonicModule,
     AdminPageRoutingModule
   ],
-  declarations: [AdminPage]
+  declarations: [AdminPage, AddQuestionModalComponent]
 })
 export class AdminPageModule {}

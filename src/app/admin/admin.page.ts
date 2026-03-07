@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { AddQuestionModalComponent } from './add-question-modal/add-question-modal.component';
 
 @Component({
   standalone: false,
@@ -8,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPage implements OnInit {
 
-  constructor() { }
+  constructor(private modalController: ModalController) {
+
+   }
 
   ngOnInit() {
+  }
+
+  async openAddQuestionModal(){
+    const modal = await this.modalController.create({
+      component: AddQuestionModalComponent,
+      cssClass: 'add-question-modal',
+    });
+    return await modal.present();
   }
 
 }

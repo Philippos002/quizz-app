@@ -1,0 +1,69 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+ion-header {
+  flex-shrink: 0;
+}
+
+ion-content.leaderboard-content {
+  flex: 1;
+  --padding-bottom: 16px;
+  --padding-top: 16px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+}
+
+.leaderboard-container {
+  background: #eae7e7;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 60px 1fr 100px;
+  gap: 16px;
+  padding: 12px 16px;
+  background: #f5f5f5;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 2px solid #ddd;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 100px;
+  gap: 16px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  align-items: center;
+  font-size: 14px;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.rank-col {
+  text-align: center;
+  font-weight: 600;
+  color: #667eea;
+}
+
+.username-col {
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.score-col {
+  text-align: right;
+  font-weight: 600;
+  color: #333;
+}

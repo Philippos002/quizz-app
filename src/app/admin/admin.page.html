@@ -1,13 +1,51 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>admin</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Admin</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">admin</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="admin-content">
+  <div class="admin-container">
+    <div class="add-section">
+      <ion-button expand="block" color="primary" (click) = "openAddQuestionModal()"> + Add Question </ion-button>
+    </div>
+
+    <div class="questions-list">
+      <h2>All Questions</h2>
+
+      <div class="question-item">
+        <div class="question-info">
+          <p class="question-text">Top 5 Liverpool goalscorers</p>
+        </div>
+        <div class="question-action">
+          <ion-button size="small" fill="clear" color="primary">Edit</ion-button>
+          <ion-button size="small" fill="clear" color="danger">Delete</ion-button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="question-info">
+          <p class="question-text">Top 5 Partizan goalscorers</p>
+        </div>
+        <div class="question-action">
+          <ion-button size="small" fill="clear" color="primary">Edit</ion-button>
+          <ion-button size="small" fill="clear" color="danger">Delete</ion-button>
+        </div>
+      </div>
+
+      <div class="question-item">
+        <div class="question-info">
+          <p class="question-text">Top 5 Real Madrid goalscorers</p>
+        </div>
+        <div class="question-action">
+          <ion-button size="small" fill="clear" color="primary">Edit</ion-button>
+          <ion-button size="small" fill="clear" color="danger">Delete</ion-button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </ion-content>

@@ -8,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultPage implements OnInit {
 
+  username: string = 'Filip';
+  score: number = 3;
+
   constructor() { }
 
   ngOnInit() {

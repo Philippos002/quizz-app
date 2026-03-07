@@ -1,13 +1,52 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>quiz</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Quiz</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">quiz</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="quiz-content">
+  <div class="question-section">
+    <h2 class="question-text"> Question</h2>
+  </div>
+
+  <div class="input-section">
+    <label>Enter answer:</label>
+    <ion-input type="text" placeholder="Type here..." class="active-input"></ion-input>
+  </div>
+
+  <div class="score-section">
+    <span>Correct answers: <strong>0</strong> / 5</span>
+  </div>
+
+  <div class="answers-section">
+
+    <div class="answer-slot empty">
+      <span class="slot-number">1.</span>
+      <span class="slot-content">-</span>
+    </div>
+
+    <div class="answer-slot empty">
+      <span class="slot-number">2.</span>
+      <span class="slot-content">-</span>
+    </div>
+
+    <div class="answer-slot empty">
+      <span class="slot-number">3.</span>
+      <span class="slot-content">-</span>
+    </div>
+
+    <div class="answer-slot empty">
+      <span class="slot-number">4.</span>
+      <span class="slot-content">-</span>
+    </div>
+
+    <div class="answer-slot empty">
+      <span class="slot-number">5.</span>
+      <span class="slot-content">-</span>
+    </div>
+    
+  </div>
 </ion-content>
