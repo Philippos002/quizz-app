@@ -5,31 +5,45 @@
 </ion-header>
 
 <ion-content>
-  <div class="auth-container">
-    <h2>Create account</h2>
+  <form #registerForm = "ngForm" (ngSubmit)="onRegister(registerForm)">
+    <div class="auth-container">
+      <h2>Create account</h2>
 
-    <div class="form-group">
-      <ion-label>Username</ion-label>
-      <ion-input placeholder="Choose a username"></ion-input>
+      <div class="form-group">
+        <ion-label>Username</ion-label>
+        <ion-input type="text" ngModel name="username" minlength="3" required #username = "ngModel" placeholder="Choose a username"></ion-input>
+      </div>
+
+      <div *ngIf="username?.invalid && username?.touched" class="error-message">
+        Username is not valid.
+      </div>
+
+      <div class="form-group">
+        <ion-label>Email</ion-label>
+        <ion-input type="email" ngModel name="email" email required #email = "ngModel" placeholder="your@email.com"></ion-input>
+      </div>
+
+      <div *ngIf="email?.invalid && email?.touched" class="error-message">
+        Email is not valid.
+      </div>
+
+      <div class="form-group">
+        <ion-label>Password</ion-label>
+        <ion-input type="password" ngModel name="password" minlength="8" required #password = "ngModel" placeholder="At least 8 characters"></ion-input>
+      </div>
+
+      <div *ngIf="password?.invalid && password?.touched" class="error-message">
+        Password is not valid.
+      </div>
+
+      <ion-button expand="block" type="submit" [disabled]="registerForm.invalid" class="register-btn">
+        Register
+      </ion-button>
+
+      <p class="auth-link">
+        Already have an account?
+        <a routerLink="/login">Login</a>
+      </p>
     </div>
-
-    <div class="form-group">
-      <ion-label>Email</ion-label>
-      <ion-input type="email" placeholder="your@email.com"></ion-input>
-    </div>
-
-    <div class="form-group">
-      <ion-label>Password</ion-label>
-      <ion-input type="password" placeholder="At least 8 characters"></ion-input>
-    </div>
-
-    <ion-button expand="block" class="register-btn">
-      Register
-    </ion-button>
-
-    <p class="auth-link">
-      Already have an account?
-      <a routerLink="/login">Login</a>
-    </p>
-  </div>
+  </form>
 </ion-content>
