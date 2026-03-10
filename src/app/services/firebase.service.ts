@@ -17,7 +17,7 @@ interface QuestionData{
 export class FirebaseService{
     private _questions = new BehaviorSubject<Question[]>([]);
 
-    constructor(private http: HttpClient, /*private authService: AuthService */){
+    constructor(private http: HttpClient){
 
     }
 
