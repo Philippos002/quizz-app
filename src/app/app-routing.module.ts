@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: '',
@@ -21,23 +24,28 @@ const routes: Routes = [
   },
   {
     path: 'quiz',
-    loadChildren: () => import('./quiz/quiz/quiz.module').then( m => m.QuizPageModule)
+    loadChildren: () => import('./quiz/quiz/quiz.module').then( m => m.QuizPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'result',
-    loadChildren: () => import('./quiz/result/result.module').then( m => m.ResultPageModule)
+    loadChildren: () => import('./quiz/result/result.module').then( m => m.ResultPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'leaderboard',
-    loadChildren: () => import('./leaderboard/leaderboard.module').then( m => m.LeaderboardPageModule)
+    loadChildren: () => import('./leaderboard/leaderboard.module').then( m => m.LeaderboardPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'admin',
-    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
+    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule),
+    canActivate: [AdminGuard]
   },
   {
     path: 'profile',
-    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule),
+    canActivate: [AuthGuard]
   },
 ];
 

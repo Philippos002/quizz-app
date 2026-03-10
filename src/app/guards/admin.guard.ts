@@ -6,15 +6,17 @@ import { AuthService } from "../services/auth.service";
     providedIn: 'root',
 })
 
-export class AuthGuard implements CanActivate{
+export class AdminGuard implements CanActivate{
+
     constructor(private authService: AuthService, private router: Router){}
 
     canActivate(): boolean {
-        if(this.authService.isUserAuthenticated){
+        if(this.authService.isAdmin()){
             return true;
         } else{
-            this.router.navigateByUrl('/login');
+            this.router.navigateByUrl('/home');
             return false;
         }
     }
+
 }

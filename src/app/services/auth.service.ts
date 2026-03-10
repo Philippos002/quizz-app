@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { User } from "../models/user.model";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "src/environments/environment";
-import { tap } from "rxjs";
+import { switchMap, tap } from "rxjs";
 import { FirebaseService } from "./firebase.service";
 
 interface AuthResponseData{
@@ -73,22 +73,22 @@ export class AuthService{
                 password: user.password,
                 returnSecureToken: true,
             }
-        ).pipe(tap(async (resData) => {
-            const expirationTime = new Date(new Date().getTime() + parseInt(resData.expiresIn) * 1000);
+        ).pipe(switchMap((resData) => {
+            return this.http.get<any>(`${environment.firebaseRDBUrl}/users/${resData.localId}.json`)
+            .pipe(tap((userDataFromDB) => {
+                const expirationTime = new Date(new Date().getTime() + parseInt(resData.expiresIn) * 1000);
 
-            const username = 'User';
-            const role = 'user';
-
-            const newUser = new User(
+                const newUser = new User(
                 resData.localId,
                 resData.email,
-                username,
+                userDataFromDB?.username || 'User',
                 resData.idToken,
                 expirationTime,
-                role
+                userDataFromDB?.role || 'user'
             );
 
             this.user = newUser;
+            }));
         }));
     }
 
@@ -104,7 +104,7 @@ export class AuthService{
             role: user.role,
         };
 
-        this.http.post(`${environment.firebaseRDBUrl}/users/${user.id}.json`, userData)
+        this.http.put(`${environment.firebaseRDBUrl}/users/${user.id}.json`, userData)
         .subscribe({
             next: () => console.log('User je sacuvan u bazi!'),
             error: (err) => console.error('Greska pri cuvanju usera!', err)
