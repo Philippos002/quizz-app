@@ -1,14 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Add Question</ion-title>
+    <ion-title>{{isEditing ? 'Edit Question' : 'Add Question'}}</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="dismiss()">Close</ion-button>
+      <ion-button (click)="dismiss()" [disabled]="isLoading">Close</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="modal-content">
   <div class="form-container">
+
     <div class="form-group">
       <label>Question Text</label>
       <ion-textarea
@@ -68,11 +69,12 @@
     </div>
 
     <div class="button-group">
-      <ion-button expand="block" color="secondary" (click)="dismiss()">
+      <ion-button expand="block" color="secondary" (click)="dismiss()" [disabled]="isLoading">
         Cancel
       </ion-button>
-      <ion-button expand="block" color="primary" (click)="save()">
-        Save Question
+      <ion-button expand="block" color="primary" (click)="save()" [disabled]="isLoading">
+        <span *ngIf="isLoading"><ion-spinner name="dots"></ion-spinner></span>
+        <span *ngIf="!isLoading">Save Question</span>
       </ion-button>
     </div>
   </div>

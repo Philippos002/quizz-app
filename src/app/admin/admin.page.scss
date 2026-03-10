@@ -29,12 +29,25 @@ ion-content.admin-content {
   }
 }
 
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+
+  p {
+    margin-top: 10px;
+    color: #999;
+  }
+}
+
 .questions-list {
   h2 {
     margin: 0 0 15px 0;
     font-size: 16px;
     font-weight: 600;
-    color: #f5f5f5;
+    color: #333;
   }
 }
 
@@ -76,4 +89,11 @@ ion-content.admin-content {
   ion-button {
     margin: 0;
   }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #999;
+  font-size: 14px;
 }

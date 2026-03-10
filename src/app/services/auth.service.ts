@@ -106,8 +106,8 @@ export class AuthService{
 
         this.http.put(`${environment.firebaseRDBUrl}/users/${user.id}.json`, userData)
         .subscribe({
-            next: () => console.log('User je sacuvan u bazi!'),
-            error: (err) => console.error('Greska pri cuvanju usera!', err)
+            next: () => console.log('User is saved in DB!'),
+            error: (err) => console.error('Error while saving user to DB!', err)
         });
     }
 
