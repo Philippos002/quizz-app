@@ -173,4 +173,43 @@ export class FirebaseService{
             return users;
         }));
     }
+
+    getUserScores(userId: string){
+        return this.http.get<{[key: string]: any}>(`${environment.firebaseRDBUrl}/scores.json`).pipe(map((scoresData) => {
+            const userScores: any[] = [];
+
+            for(const key in scoresData){
+                if(scoresData.hasOwnProperty(key)){
+                    if(scoresData[key].userId === userId){
+                        userScores.push({
+                            id: key,
+                            ...scoresData[key],
+                        });
+                    }
+                }
+            }
+
+            return userScores;
+        }));
+    }
+
+    getQuizzesPlayedCount(userId: string){
+        return this.getUserScores(userId).pipe(map((scores) => scores.length));
+    }
+
+    getBestScore(userId: string){
+        return this.getUserScores(userId).pipe(map((scores) => {
+            if(scores.length === 0) return 0;
+            return Math.max(...scores.map(s => s.scoreThisGame || 0));
+        }));
+    }
+
+    getUserProfile(userId: string){
+        return this.http.get<any>(`${environment.firebaseRDBUrl}/users/${userId}.json`).pipe(map((userData) => ({
+            totalScore: userData?.totalScore || 0,
+            username: userData?.username || 'User',
+            email: userData?.email || '',
+            role: userData?.role || 'user',
+        })));
+    }
 }
