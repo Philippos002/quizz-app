@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { QuizService } from 'src/app/services/quiz.service';
 
 @Component({
   standalone: false,
@@ -8,12 +11,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultPage implements OnInit {
 
-  username: string = 'Filip';
-  score: number = 3;
+  username: string = '';
+  score: number = 0;
 
-  constructor() { }
+  constructor(private authService: AuthService, private quizService: QuizService, private router: Router) { }
 
   ngOnInit() {
+    this.username = this.authService.getUsername() || 'User';
+    this.score = this.quizService.getCurrentScore();
+  }
+
+  playAgain(){
+    this.quizService.resetScore();
+    this.router.navigateByUrl('/quiz');
+  }
+
+  goToLeaderboard(){
+    this.router.navigateByUrl('/leaderboard');
+  }
+
+  exit(){
+    this.router.navigateByUrl('/home');
   }
 
 }

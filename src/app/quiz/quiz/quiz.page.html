@@ -4,49 +4,37 @@
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
     <ion-title>Quiz</ion-title>
+    <ion-buttons slot="end">
+      <ion-badge color="danger">⏱️ {{timeRemaining}}s</ion-badge>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="quiz-content">
-  <div class="question-section">
-    <h2 class="question-text"> Question</h2>
+  <div class="loading" *ngIf="isLoading">
+    <ion-spinner></ion-spinner>
+    <p>Loading question...</p>
   </div>
 
-  <div class="input-section">
-    <label>Enter answer:</label>
-    <ion-input type="text" placeholder="Type here..." class="active-input"></ion-input>
-  </div>
-
-  <div class="score-section">
-    <span>Correct answers: <strong>0</strong> / 5</span>
-  </div>
-
-  <div class="answers-section">
-
-    <div class="answer-slot empty">
-      <span class="slot-number">1.</span>
-      <span class="slot-content">-</span>
+  <div class="quiz-container" *ngIf="!isLoading && question">
+    <div class="question-section">
+      <h2 class="question-text">{{question.questionText}}</h2>
     </div>
 
-    <div class="answer-slot empty">
-      <span class="slot-number">2.</span>
-      <span class="slot-content">-</span>
+    <div class="score-section">
+      <span>Correct answers: <strong>{{score}}</strong> / 5</span>
     </div>
 
-    <div class="answer-slot empty">
-      <span class="slot-number">3.</span>
-      <span class="slot-content">-</span>
+    <div class="answers-section">
+      <div class="answer-slot" *ngFor="let answer of slots; let i = index">
+        <span class="slot-number">{{i + 1}}.</span>
+        <span class="slot-content">{{answer || '-'}}</span>
+      </div>
     </div>
 
-    <div class="answer-slot empty">
-      <span class="slot-number">4.</span>
-      <span class="slot-content">-</span>
+    <div class="input-section">
+      <label>Enter an answer (press ENTER):</label>
+      <ion-input type="text" [(ngModel)] = "answerInput" (keypress) = "onKeyPress($event)" placeholder="Type here..." class="active-input" [disabled]="quizFinished"></ion-input>
     </div>
-
-    <div class="answer-slot empty">
-      <span class="slot-number">5.</span>
-      <span class="slot-content">-</span>
-    </div>
-    
   </div>
 </ion-content>

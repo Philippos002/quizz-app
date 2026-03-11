@@ -8,12 +8,35 @@ ion-header {
   flex-shrink: 0;
 }
 
+ion-badge {
+  font-size: 14px;
+  padding: 8px 12px;
+}
+
 ion-content.quiz-content {
   flex: 1;
   --padding-bottom: 16px;
   --padding-top: 16px;
   --padding-start: 16px;
   --padding-end: 16px;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 10px;
+
+  p {
+    color: #999;
+  }
+}
+
+.quiz-container {
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .question-section {
@@ -28,32 +51,6 @@ ion-content.quiz-content {
   font-weight: 600;
   color: #333;
   line-height: 1.4;
-}
-
-.input-section {
-  margin-bottom: 20px;
-
-  label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: #333;
-    font-size: 14px;
-  }
-}
-
-.active-input {
-  padding: 12px;
-  border: 2px solid #667eea;
-  border-radius: 6px;
-  font-size: 14px;
-
-  --padding-top: 0;
-  --padding-bottom: 0;
-  --padding-start: 0;
-  --padding-end: 0;
-  --background: transparent;
-  --border-color: transparent;
 }
 
 .score-section {
@@ -74,6 +71,7 @@ ion-content.quiz-content {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-bottom: 20px;
 }
 
 .answer-slot {
@@ -83,15 +81,11 @@ ion-content.quiz-content {
   padding: 12px;
   border: 1px solid #ddd;
   border-radius: 6px;
-  background: white;
+  background: #fafafa;
 
-  &.filled {
+  &:has-text {
     background: #f0f8ff;
     border-color: #667eea;
-  }
-
-  &.empty {
-    background: #fafafa;
   }
 }
 
@@ -108,4 +102,35 @@ ion-content.quiz-content {
   font-size: 14px;
   color: #333;
   word-break: break-word;
+}
+
+.input-section {
+  margin-bottom: 15px;
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+  }
+}
+
+.active-input {
+  border: 2px solid #667eea;
+  border-radius: 6px;
+  padding: 10px;
+
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+  --background: transparent;
+  --border-color: transparent;
+}
+
+.button-section {
+  ion-button {
+    margin: 0;
+  }
 }

@@ -1,8 +1,5 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
     <ion-title>Result</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -22,15 +19,15 @@
     </div>
 
     <div class="buttons-container">
-      <ion-button expand="block" color="primary" routerLink = "/quiz">
+      <ion-button expand="block" color="primary" (click) = "playAgain()">
         Play Again!
       </ion-button>
 
-      <ion-button expand="block" color="secondary" routerLink = "/leaderboard">
+      <ion-button expand="block" color="secondary" (click) = "goToLeaderboard()">
         Leaderboard
       </ion-button>
 
-      <ion-button expand="block" color="danger" routerLink = "/home">
+      <ion-button expand="block" color="danger" (click) = "exit()">
         Exit
       </ion-button>
     </div>

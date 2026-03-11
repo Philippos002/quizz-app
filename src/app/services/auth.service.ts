@@ -55,7 +55,8 @@ export class AuthService{
                 user.username || 'User',
                 resData.idToken,
                 expirationTime,
-                'user'
+                'user',
+                0
             );
 
             this.user = newUser;
@@ -84,7 +85,8 @@ export class AuthService{
                 userDataFromDB?.username || 'User',
                 resData.idToken,
                 expirationTime,
-                userDataFromDB?.role || 'user'
+                userDataFromDB?.role || 'user',
+                userDataFromDB?.totalScore || 0
             );
 
             this.user = newUser;
@@ -102,6 +104,7 @@ export class AuthService{
             email: user.email,
             username: user.username,
             role: user.role,
+            totalScore: 0
         };
 
         this.http.put(`${environment.firebaseRDBUrl}/users/${user.id}.json`, userData)
