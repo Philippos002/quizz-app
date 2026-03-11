@@ -154,4 +154,23 @@ export class FirebaseService{
             })
         );
     }
+
+    getAllUsers(){
+        return this.http.get<{[key: string]: any}>(`${environment.firebaseRDBUrl}/users.json`).pipe(map((usersData) => {
+            const users: any[] = [];
+
+            for(const key in usersData){
+                if(usersData.hasOwnProperty(key)){
+                    users.push({
+                        id: key,
+                        email: usersData[key].email,
+                        username: usersData[key].username,
+                        role: usersData[key].role,
+                        totalScore: usersData[key].totalScore || 0,
+                    });
+                }
+            }
+            return users;
+        }));
+    }
 }

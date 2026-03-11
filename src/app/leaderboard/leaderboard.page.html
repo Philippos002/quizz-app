@@ -8,35 +8,26 @@
 </ion-header>
 
 <ion-content class="leaderboard-content">
-  <div class="leaderboard-container">
+  <div class="loading" *ngIf="isLoading">
+    <ion-spinner></ion-spinner>
+    <p>Loading leaderboard...</p>
+  </div>
+
+  <div class="leaderboard-container" *ngIf="!isLoading">
     <div class="table-header">
       <span class="rank-col">Rank</span>
       <span class="username-col">Username</span>
       <span class="score-col">Total Score</span>
     </div>
 
-    <div class="table-row">
-      <span class="rank-col">1</span>
-      <span class="username-col">Filip</span>
-      <span class="score-col">45</span>
+    <div class="table-row" *ngFor="let user of users">
+      <span class="rank-col">{{user.rank}}</span>
+      <span class="username-col">{{user.username}}</span>
+      <span class="score-col">{{user.totalScore}}</span>
     </div>
 
-    <div class="table-row">
-      <span class="rank-col">2</span>
-      <span class="username-col">Ana</span>
-      <span class="score-col">40</span>
-    </div>
-
-    <div class="table-row">
-      <span class="rank-col">3</span>
-      <span class="username-col">Nole</span>
-      <span class="score-col">38</span>
-    </div>
-
-    <div class="table-row">
-      <span class="rank-col">4</span>
-      <span class="username-col">Marina</span>
-      <span class="score-col">34</span>
+    <div class="empty-state" *ngIf="users.length === 0">
+      <p>No users yet.</p>
     </div>
   </div>
 </ion-content>
