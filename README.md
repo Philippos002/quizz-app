@@ -31,8 +31,8 @@ A real-time quiz application built with Angular, Ionic, and Firebase. Users can 
     Real-time Updates: Leaderboard updates immediately after quiz completion
     Player Statistics: See username and accumulated points
 
-  User Profile
-  
-  Personal Statistics: View total score, number of quizzes played, and best score
-  Score History: Track your quiz performance over time
-  Profile Management: Central hub for user information
+    User Profile
+    
+    Personal Statistics: View total score, number of quizzes played, and best score
+    Score History: Track your quiz performance over time
+    Profile Management: Central hub for user information
